@@ -1,0 +1,241 @@
+<html>
+    <head>
+        <title>Account Setting</title>
+        <link href="style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript">
+
+function newjob(){
+    debugger;
+document.getElementById("NewJob").style.display="block";
+document.getElementById("JobList").style.display="none";
+}
+
+function list() {
+    debugger;
+    
+    document.getElementById("NewJob").style.display="none";
+document.getElementById("JobList").style.display="block";
+
+}
+function save(){
+    debugger;
+    var s =document.getElementById("JobType").value;
+
+    if(s=="Design"){
+var type=document.getElementById("JobType").value;
+var titel=document.getElementById("txtJobTitle").value;
+var loc=document.getElementById("ddlJobLocation").value;
+
+
+
+var sp1=document.createElement("span");
+sp1.setAttribute("class","JobElementTitle");
+var spn1=document.createTextNode(titel);
+sp1.appendChild(spn1);
+
+
+var sp2=document.createElement("span");
+sp2.setAttribute("class","JobElementType");
+var spn2=document.createTextNode(type);
+sp2.appendChild(spn2);
+
+
+var sp3=document.createElement("span");
+sp3.setAttribute("class","JobElementLocation");
+var spn3=document.createTextNode(loc);
+sp3.appendChild(spn3);
+
+ 
+ var ndiv1= document.createElement("div");
+ndiv1.setAttribute("class","ContentRow");
+ 
+var ndiv2= document.createElement("div");
+ndiv2.setAttribute("class","Row");
+
+ndiv1.appendChild(ndiv2);
+
+var ndiv3= document.createElement("div");
+ndiv3.setAttribute("class","TasksBox");
+ndiv2.appendChild(ndiv3);
+
+
+ndiv3.appendChild(sp1);
+ndiv3.appendChild(sp2);
+ndiv3.appendChild(sp3);
+
+
+var div =document.getElementById("DesignJobs");
+div.appendChild(ndiv1);
+
+    }
+
+
+}
+
+function chang(){
+    debugger;
+
+    var select = document.getElementById("JobLocation").value;
+
+if(select=="Jordan"){
+var row=document.getElementsByClassName("TasksBox");
+
+for(var i=0; i<=row.length ;i++){
+var n=row[i].lastElementChild.innerHTML;
+if(n =="USA"){
+var div=row[i].parentNode.parentNode;
+div.remove();
+
+}}}
+else{
+    if(select=="USA"){
+var row=document.getElementsByClassName("TasksBox");
+
+for(var i=0; i<=row.length ;i++){
+var n=row[i].lastElementChild.innerHTML;
+if(n =="Jordan"){
+var div=row[i].parentNode.parentNode;
+div.remove();
+
+
+}
+
+}}}
+}
+</script>
+    
+    </head>
+    <body>
+<div class="ContentBox">
+<div class="Menu">
+<div class="MenuItems"onclick="newjob()" >
+    <span class="MenuText"  >New Job</span>
+</div>
+<div class="MenuItems" onclick="list()" >
+    <span class="MenuText"  >Job List</span>
+</div>
+</div>
+<div class="Content" >
+
+    <div id="NewJob" class="ContentDev">
+
+
+    <div class="ContentRow">
+    <span>
+        Job Title
+    </span>
+    <div class="Row">
+        <input type="text" id="txtJobTitle" />
+    </div>
+</div>
+<div class="ContentRow">
+    <span>
+        Type of Job
+    </span>
+    <div class="Row">
+        <select class="FormCountrol" id="JobType">
+            <option>Design</option>
+            <option>Development</option>
+        </select>
+    </div>
+</div>
+<div class="ContentRow">
+    <span>
+        Location
+    </span>
+    <div class="Row">
+        <select class="FormCountrol" id="ddlJobLocation" >
+            <option>USA</option>
+            <option>Jordan</option>
+        </select>
+    </div>
+</div>
+
+
+<div class="actionBar">
+    <div class="SaveChangesBox">
+        <button class="btn ButtonSubmit" onclick="save()">Save Changes</button>
+    </div>
+    <div class="CancelBox">
+        <button class="btn btn-default" >Cancel</button>
+    </div>
+</div>
+</div>
+
+
+
+<div id="JobList" class="ContentDev" style="display: none;">
+
+
+    <div class="ContentRow">
+        <span>
+            Location
+        </span>
+        <div class="Row">
+            <select class="FormCountrol" id="JobLocation" style="width: 30%;" onchange="chang()" >
+                <option>ALL</option>
+                <option>Jordan</option>
+                <option>USA</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="SubTitleBlock">
+        <span class="SubTitleText">Design</span>
+    </div>
+    <div id="DesignJobs">
+    <div class="ContentRow">
+        <div class="Row">
+            <div class="TasksBox">
+                <span class="JobElementTitle">Senior Graphic Designer</span>
+                <span class="JobElementType">Full Time</span>
+                <span class="JobElementLocation">USA</span>
+            </div>
+        </div>
+    </div>
+    <div class="ContentRow">
+        <div class="Row">
+            <div class="TasksBox">
+                <span class="JobElementTitle">Senior Graphic Designer</span>
+                <span class="JobElementType">Full Time</span>
+                <span class="JobElementLocation">Jordan</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="SubTitleBlock">
+    <span class="SubTitleText">Development</span>
+</div>
+<div id="DevelopmentJobs">
+<div class="ContentRow">
+    <div class="Row">
+        <div class="TasksBox">
+            <span class="JobElementTitle">.NET Developer</span>
+            <span class="JobElementType">Full Time</span>
+            <span class="JobElementLocation">Jordan</span>
+        </div>
+    </div>
+</div>
+<div class="ContentRow">
+    <div class="Row">
+        <div class="TasksBox">
+            <span class="JobElementTitle">.NET Developer</span>
+            <span class="JobElementType">Full Time</span>
+            <span class="JobElementLocation">USA</span>
+        </div>
+    </div>
+</div>
+</div>
+
+    
+</div>
+
+  
+  
+</div>
+</div>
+
+
+    </body>
+</html>
